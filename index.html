@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CraftLab. - Funnels + Automation</title>
+  <meta name="description" content="GoHighLevel Automation Specialist. I build Lead-to-Client Automation Systems for service-based businesses in the US and Australia." />
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@700;800;900&display=swap" as="style" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=166" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'" />
+</head>
+<body>
+
+  <!-- EXPANDABLE SIDEBAR NAV -->
+  <nav class="nav" id="nav">
+
+    <!-- Horizontal top bar -->
+    <div class="nav__strip">
+
+      <!-- Left: C. mark + wordmark -->
+      <a href="#home" class="nav__icon-mark" id="navLogoBtn" aria-label="Home">C.</a>
+      <span class="nav__brand">CraftLab.</span>
+
+      <!-- Right: socials + menu toggle -->
+      <div class="nav__socials">
+        <a href="https://linkedin.com" class="nav__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://instagram.com" class="nav__social" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://facebook.com" class="nav__social" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <svg class="nav__ico nav__ico--bars" width="20" height="13" viewBox="0 0 20 13" fill="none" aria-hidden="true">
+          <rect width="20" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect y="5.75" width="20" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect y="11.5" width="20" height="1.5" rx="0.75" fill="currentColor"/>
+        </svg>
+        <svg class="nav__ico nav__ico--x" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav__toggle-label">MENU</span>
+      </button>
+
+    </div>
+
+    <!-- Full-width dropdown panel -->
+    <div class="nav__panel" id="navPanel">
+      <div class="nav__panel-logo">
+        <img src="images/Craftlab logo.png" alt="CraftLab." />
+      </div>
+      <ul class="nav__links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#system">System</a></li>
+        <li><a href="#who">Industries</a></li>
+        <li><a href="portfolio.html">All Works</a></li>
+        <li><a href="booking.html">Book Audit</a></li>
+      </ul>
+      <div class="nav__panel-foot">
+        <div class="nav__panel-rule"></div>
+        <a href="mailto:praktisaiden@gmail.com" class="nav__email">praktisaiden@gmail.com</a>
+      </div>
+    </div>
+
+  </nav>
+  <div class="nav__overlay" id="navOverlay"></div>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+
+
+    <!-- 3D logo parallax background -->
+    <div class="hero__plx-bg" aria-hidden="true">
+      <div class="hero__plx-wrap">
+        <img class="hero__plx-icon" src="images/3d%20icons/Untitled%20(2000%20x%201300%20px)%20(2).png" alt="" draggable="false">
+      </div>
+    </div>
+
+    <!-- Transparent watermark logo — sits behind headline -->
+    <div class="hero__watermark" aria-hidden="true">
+      <img src="images/Craftlab logo.png" alt="" class="hero__watermark-img" />
+    </div>
+
+    <!-- Brand Appart-style: oversized headline IS the hero visual -->
+    <div class="hero__copy">
+      <h1 class="hero__h1"><span class="hero__h1-line">Build more</span><br><span class="hero__h1-accent">freedom.</span></h1>
+      <p class="hero__tagline">Every system built inside GoHighLevel.</p>
+      <p class="hero__sub">We help businesses capture every lead, follow up automatically, and book more appointments — without hiring staff or chasing prospects manually. Done-For-You. Live in 30 days.</p>
+      <div class="hero__ctas">
+        <a href="booking.html" class="hero__btn hero__btn--solid">Stop Losing Leads</a>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- STATEMENT CAROUSEL — scroll-driven -->
+  <div class="stmt-scroll-wrap" id="stmtScrollWrap">
+  <section class="statement">
+    <div class="statement__ghost" aria-hidden="true">SYSTEM</div>
+    <div class="stmt-carousel">
+
+      <div class="stmt-track" id="stmtTrack">
+
+        <!-- Slide 1 -->
+        <div class="stmt-slide">
+          <p class="statement__text">
+            You paid to get that lead.<br>
+            They showed interest.<br>
+            You followed up once.<br>
+            They went quiet. You moved on.<br>
+            <span class="text-orange">Your competitor followed up 7 times.</span>
+          </p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="stmt-slide">
+          <p class="statement__text">
+            They missed the appointment.<br>
+            You called once. Got voicemail.<br>
+            You assumed they weren't interested.<br>
+            You moved on.<br>
+            <span class="text-orange">That was a $4,000 lead you abandoned.</span>
+          </p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="stmt-slide">
+          <p class="statement__text">
+            How many leads are sitting<br>
+            in your phone right now<br>
+            with zero follow-up?<br>
+            You don't know.<br>
+            <span class="text-orange">That's the problem.</span>
+          </p>
+        </div>
+
+        <!-- Slide 4: THE OFFER -->
+        <div class="stmt-slide stmt-slide--offer">
+          <div class="stmt-offer">
+            <span class="stmt-offer__eyebrow">The Fix</span>
+            <h2 class="stmt-offer__h">Lead-to-Client<br>Automation System<span style="color:var(--white)">™</span></h2>
+            <p class="stmt-offer__sub">CRM. Pipeline. 12-touch follow-up. Appointment booking.<br>No-show recovery. Nurture campaigns. All connected. Live in 30 days.</p>
+            <div class="stmt-offer__btns">
+              <a href="#system" class="stmt-offer__btn">Show Me The System →</a>
+              <a href="#who" class="stmt-offer__btn stmt-offer__btn--ghost">Who I Work With</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  </div>
+
+  <!-- ABOUT — scrollytelling split -->
+  <section class="about" id="about">
+    <div class="about__scroll">
+
+      <!-- LEFT: scrolling narrative steps -->
+      <div class="about__steps">
+
+        <!-- ACT 1 — Who I Am -->
+        <div class="about__step" data-about="0">
+          <span class="about__step-label">Who I Am</span>
+          <h2 class="about__step-h">I Am <span class="about__step-h--orange">William.</span><br>I Build Systems.</h2>
+          <p class="about__step-p">I'm a GoHighLevel Automation Specialist. I don't sell software. I don't run ads. I build the operating system that turns every lead your business generates into a booked appointment — automatically, consistently, without you chasing it. I work with HVAC companies, roofing crews, dental clinics, med spas, solar teams, and real estate operators across <span class="text-orange">the US and Australia</span> who are done losing revenue to a process that doesn't exist.</p>
+          <p class="about__step-name">William Con-ui &nbsp;·&nbsp; Founder, CraftLab.</p>
+        </div>
+
+        <!-- ACT 2 — The Mechanism -->
+        <div class="about__step" data-about="1">
+          <span class="about__step-label">How I Work</span>
+          <h2 class="about__step-h">Blueprint first.<br><span class="about__step-h--orange">Build second.</span></h2>
+          <p class="about__step-p">Before I touch GoHighLevel, I spend 48 hours mapping your exact customer journey — where leads come in, what should happen next, and where revenue is currently leaking. That map becomes the blueprint. The blueprint drives everything: <span class="text-orange">the CRM, the pipelines, the 12-touch follow-up sequences, the reminders, the recovery automations.</span> No guessing. No templates. Your process, engineered.</p>
+        </div>
+
+        <!-- ACT 3 — Results (combined) -->
+        <div class="about__step" data-about="2">
+          <span class="about__step-label">The Result</span>
+          <h2 class="about__step-h">Every lead caught.<br><span class="about__step-h--orange">Every deal followed up.</span></h2>
+          <p class="about__step-p">Every new lead is captured into your CRM in under <span class="text-orange">60 seconds</span> — tagged, staged, and texted within 5 minutes. No-shows trigger a 3-step recovery sequence automatically. The average business responds in <span class="text-orange">42 hours</span>. Your system responds in 5 minutes, then follows up <span class="text-orange">12 more times</span> over 90 days. While you sleep.</p>
+        </div>
+
+        <!-- ACT 4 — Your Move -->
+        <div class="about__step" data-about="3">
+          <span class="about__step-label">Your Move</span>
+          <h2 class="about__step-h">The system exists.<br><span class="about__step-h--orange">Let's build yours.</span></h2>
+          <p class="about__step-p">Book a free 30-minute Automation Audit. I'll show you exactly where your leads are going cold, what a system looks like for your business, and what it costs you every month to leave it broken. <span class="text-orange">No pitch. No pressure. Just a plan.</span></p>
+          <div class="about__cta">
+            <a href="#system" class="btn btn--orange">Show Me The System →</a>
+            <a href="#who" class="btn btn--ghost-dark">Who I Work With</a>
+          </div>
+        </div>
+
+      </div><!-- /about__steps -->
+
+      <!-- RIGHT: sticky photo -->
+      <div class="about__sticky">
+        <div class="about__photo" role="img" aria-label="William Con-ui, Founder of CraftLab.">
+          <div class="about__photo-overlay"></div>
+          <span class="about__credit">Build More <span class="text-orange">Freedom.</span></span>
+        </div>
+      </div>
+
+    </div><!-- /about__scroll -->
+  </section>
+
+  <!-- SYSTEM — heading + stacking cards in one section -->
+  <section class="system-cards" id="system">
+    <div class="sc-track">
+
+      <!-- Intro slide: black sticky card -->
+      <div class="sc-item sc-item--intro">
+        <div class="sc-intro__inner">
+          <span class="sc-intro__eyebrow">The System</span>
+          <h2 class="sc-intro__h">Lead-to-Client<br>Automation System<span class="text-orange">™</span></h2>
+          <p class="sc-intro__sub">A fully customized, done-for-you GoHighLevel system built around your exact process in 30 days. Not a template. Not a DIY course. A complete operating system for your entire sales pipeline.</p>
+          <div class="sc-intro__scroll">Scroll to explore ↓</div>
+        </div>
+      </div>
+
+      <div class="sc-item">
+        <div class="sc-icon" aria-hidden="true">
+          <img src="images/3d icons for white section/Icon 1.png" alt="" class="sc-icon__img">
+        </div>
+        <div class="sc-content">
+          <h3 class="sc-title">Every Lead. Captured &amp; Tracked. <span class="text-orange">Instantly.</span></h3>
+          <p class="sc-desc">The moment someone contacts you — form, call, or ad click — they're in your CRM. Tagged, assigned, and scheduled for follow-up before you see the notification. Zero manual entry. Zero leads slipping through.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">CRM Setup</span>
+            <span class="sc-tag">Auto-Tag</span>
+            <span class="sc-tag">Instant Entry</span>
+            <span class="sc-tag">Pipeline Tracking</span>
+          </div>
+          <blockquote class="sc-quote">"We never lose a lead now. Every single inquiry is tracked from the second it comes in." <cite>— James M., HVAC Owner, Texas</cite></blockquote>
+        </div>
+      </div>
+
+      <div class="sc-item">
+        <div class="sc-icon" aria-hidden="true">
+          <img src="images/3d icons for white section/Icon 2.png" alt="" class="sc-icon__img">
+        </div>
+        <div class="sc-content">
+          <h3 class="sc-title">12-Touch Follow-Up. Running 24/7. <span class="text-orange">Without You.</span></h3>
+          <p class="sc-desc">Your system follows up across SMS and email for up to 90 days on a cadence built to convert. Most businesses quit after 2 touches. The average deal closes on touch 8. Yours never stops.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">SMS + Email</span>
+            <span class="sc-tag">90-Day Cadence</span>
+            <span class="sc-tag">12-Touch Sequence</span>
+            <span class="sc-tag">Auto-Nurture</span>
+          </div>
+          <blockquote class="sc-quote">"Our booking rate tripled in the first 30 days. The follow-up sequence just runs itself." <cite>— Sarah K., Roofing Co., Melbourne</cite></blockquote>
+        </div>
+      </div>
+
+      <div class="sc-item">
+        <div class="sc-icon" aria-hidden="true">
+          <img src="images/3d icons for white section/Icon 3.png" alt="" class="sc-icon__img">
+        </div>
+        <div class="sc-content">
+          <h3 class="sc-title">Discovery Calls That Book, Confirm &amp; <span class="text-orange">Reschedule Themselves.</span></h3>
+          <p class="sc-desc">Leads pick a time. Confirmation fires. SMS reminders go 24h and 1h before. If they cancel, a reschedule sequence kicks in immediately. Your calendar fills without your involvement.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">Auto-Confirm</span>
+            <span class="sc-tag">SMS Reminders</span>
+            <span class="sc-tag">Auto-Reschedule</span>
+            <span class="sc-tag">−60% No-Shows</span>
+          </div>
+          <blockquote class="sc-quote">"No-shows dropped by 60%. The system handles confirmation and reminders before every single call." <cite>— Dr. Michael T., Dental Practice, Sydney</cite></blockquote>
+        </div>
+      </div>
+
+      <div class="sc-item">
+        <div class="sc-icon" aria-hidden="true">
+          <img src="images/3d icons for white section/Icon 4.png" alt="" class="sc-icon__img">
+        </div>
+        <div class="sc-content">
+          <h3 class="sc-title">No-Shows Recovered. Dead Leads <span class="text-orange">Reactivated.</span></h3>
+          <p class="sc-desc">Every no-show triggers a 3-step recovery sequence within the hour. Every closed-lost lead enters a 6-month nurture campaign. The revenue you thought was gone keeps coming back.</p>
+          <div class="sc-tags">
+            <span class="sc-tag">No-Show Recovery</span>
+            <span class="sc-tag">6-Month Nurture</span>
+            <span class="sc-tag">Re-Engagement</span>
+            <span class="sc-tag">$18k Recovered</span>
+          </div>
+          <blockquote class="sc-quote">"We recovered $18,000 in deals we thought were dead. The system just keeps working in the background." <cite>— Mark D., Solar Company, Phoenix</cite></blockquote>
+        </div>
+      </div>
+
+    </div><!-- /sc-track -->
+  </section><!-- /system-cards -->
+
+  <!-- PROCESS -->
+  <!-- JOURNEY — scrollytelling step sequence -->
+  <section class="journey" id="journey">
+    <div class="journey__pin">
+
+      <!-- Top progress bar -->
+      <div class="j-progress-bar"><div class="j-progress-fill"></div></div>
+
+      <!-- Steps -->
+      <div class="j-stage">
+
+        <!-- Intro slide -->
+        <div class="j-step j-step--intro" data-step="0">
+          <div class="j-content">
+            <span class="j-label">How It Works</span>
+            <h2 class="j-title j-title--intro">Here's how we build.</h2>
+            <p class="j-desc">Every project follows the same proven process — blueprint first, then build. From kickoff to live system in 30 days. Scroll to walk through it.</p>
+          </div>
+        </div>
+
+        <div class="j-step" data-step="1">
+          <div class="j-content">
+            <span class="j-label">01 / 06 — Blueprint</span>
+            <h2 class="j-title">Process Map.</h2>
+            <p class="j-desc">Before touching any software, we map your entire customer journey. Every stage, trigger, and outcome is defined. This blueprint drives every decision that follows.</p>
+            <div class="j-badge j-badge--active">Phase: Blueprint Session</div>
+          </div>
+        </div>
+
+        <div class="j-step" data-step="2">
+          <div class="j-content">
+            <span class="j-label">02 / 06 — Build</span>
+            <h2 class="j-title">CRM Built.</h2>
+            <p class="j-desc">Your GoHighLevel account is built from scratch around the blueprint. Pipeline stages, custom fields, lead sources, and contact management — all structured to match your process.</p>
+            <div class="j-badge j-badge--active">Phase: CRM &amp; Pipeline</div>
+          </div>
+        </div>
+
+        <div class="j-step" data-step="3">
+          <div class="j-content">
+            <span class="j-label">03 / 06 — Automation</span>
+            <h2 class="j-title">Sequences Live.</h2>
+            <p class="j-desc">Every follow-up, confirmation, appointment reminder, no-show recovery, and re-engagement sequence is built and connected. The system works without you having to think about it.</p>
+            <div class="j-badge j-badge--active">Phase: Automation Sequences</div>
+          </div>
+        </div>
+
+        <div class="j-step" data-step="4">
+          <div class="j-content">
+            <span class="j-label">04 / 06 — Testing</span>
+            <h2 class="j-title">System Tested.</h2>
+            <p class="j-desc">The entire system is tested end-to-end before going live. Every trigger, message, and notification is verified. Nothing launches until it works exactly as designed.</p>
+            <div class="j-badge j-badge--active">Phase: Testing &amp; QA</div>
+          </div>
+        </div>
+
+        <div class="j-step" data-step="5">
+          <div class="j-content">
+            <span class="j-label">05 / 06 — Approval</span>
+            <h2 class="j-title">You Approve.</h2>
+            <p class="j-desc">Before anything goes live, you review the complete system. Every workflow, every message, every pipeline stage. You sign off on the build. Nothing is launched without your approval.</p>
+            <div class="j-badge j-badge--active">Phase: Client Sign-Off</div>
+          </div>
+        </div>
+
+        <div class="j-step" data-step="6">
+          <div class="j-content">
+            <span class="j-label">06 / 06 — Live on GoHighLevel</span>
+            <h2 class="j-title">You're Live.</h2>
+            <p class="j-desc">Your complete Lead-to-Client Automation System is now live inside GoHighLevel — CRM, pipelines, 12-touch follow-up sequences, appointment booking, reminders, no-show recovery, and reporting. All running. All automated. 30 days of direct support from day one.</p>
+            <div class="j-badge j-badge--won">Delivered on GoHighLevel ✓</div>
+            <p class="j-extension">Blueprint → Build → Approved → Live on GHL. In 30 days.</p>
+          </div>
+        </div>
+
+        <!-- CTA STEP -->
+        <div class="j-step j-step--cta" data-step="7">
+          <div class="j-cta">
+            <p class="j-cta__truth">Right now, leads are coming in.<br>Most of them are being ignored.</p>
+            <h2 class="j-cta__h">Stop losing revenue<br>you already earned.</h2>
+            <p class="j-cta__sub">One free call. 30 minutes. We map exactly where your leads are falling through the cracks — and show you what the fix looks like. You leave with a plan whether we work together or not.</p>
+            <a href="booking.html" class="j-cta__btn">Book My Free Audit →</a>
+            <p class="j-cta__fine">No pitch. No pressure. No commitment.</p>
+          </div>
+        </div>
+
+      </div><!-- /j-stage -->
+
+      <!-- Workflow diagram — right panel -->
+      <div class="j-flow-panel" aria-hidden="true">
+
+        <div class="j-fn" data-node="1">
+          <div class="j-fn__bullet"><span></span></div>
+          <div class="j-fn__card">
+            <div class="j-fn__num">01</div>
+            <div class="j-fn__info">
+              <div class="j-fn__name">Process Map</div>
+              <div class="j-fn__sub">Blueprint session — Day 1</div>
+            </div>
+            <div class="j-fn__tag">● Blueprint</div>
+          </div>
+        </div>
+
+        <div class="j-fn__connector"><div class="j-fn__fill"></div></div>
+
+        <div class="j-fn" data-node="2">
+          <div class="j-fn__bullet"><span></span></div>
+          <div class="j-fn__card">
+            <div class="j-fn__num">02</div>
+            <div class="j-fn__info">
+              <div class="j-fn__name">CRM &amp; Pipeline</div>
+              <div class="j-fn__sub">Built from scratch — Day 3–7</div>
+            </div>
+            <div class="j-fn__tag">● Build</div>
+          </div>
+        </div>
+
+        <div class="j-fn__connector"><div class="j-fn__fill"></div></div>
+
+        <div class="j-fn" data-node="3">
+          <div class="j-fn__bullet"><span></span></div>
+          <div class="j-fn__card">
+            <div class="j-fn__num">03</div>
+            <div class="j-fn__info">
+              <div class="j-fn__name">Automation Sequences</div>
+              <div class="j-fn__sub">12-touch follow-up — Day 7–21</div>
+            </div>
+            <div class="j-fn__tag">● Automation</div>
+          </div>
+        </div>
+
+        <div class="j-fn__connector"><div class="j-fn__fill"></div></div>
+
+        <div class="j-fn" data-node="4">
+          <div class="j-fn__bullet"><span></span></div>
+          <div class="j-fn__card">
+            <div class="j-fn__num">04</div>
+            <div class="j-fn__info">
+              <div class="j-fn__name">Testing &amp; QA</div>
+              <div class="j-fn__sub">End-to-end verified — Day 21–28</div>
+            </div>
+            <div class="j-fn__tag">● Testing</div>
+          </div>
+        </div>
+
+        <div class="j-fn__connector"><div class="j-fn__fill"></div></div>
+
+        <div class="j-fn" data-node="5">
+          <div class="j-fn__bullet"><span></span></div>
+          <div class="j-fn__card">
+            <div class="j-fn__num">05</div>
+            <div class="j-fn__info">
+              <div class="j-fn__name">Client Approval</div>
+              <div class="j-fn__sub">You review &amp; sign off — Day 28–29</div>
+            </div>
+            <div class="j-fn__tag">● Approved</div>
+          </div>
+        </div>
+
+        <div class="j-fn__connector"><div class="j-fn__fill"></div></div>
+
+        <div class="j-fn" data-node="6">
+          <div class="j-fn__bullet"><span></span></div>
+          <div class="j-fn__card">
+            <div class="j-fn__num">06</div>
+            <div class="j-fn__info">
+              <div class="j-fn__name">Live on GoHighLevel</div>
+              <div class="j-fn__sub">Training + 30-day support — Day 30</div>
+            </div>
+            <div class="j-fn__tag j-fn__tag--won">✓ Live on GHL</div>
+          </div>
+        </div>
+
+        <div class="j-fn__terminal" id="jTerminal"></div>
+
+      </div><!-- /j-flow-panel -->
+
+    </div><!-- /journey__pin -->
+  </section><!-- /journey -->
+
+  <!-- WHO — horizontal scrolly slides + folder cards -->
+  <section class="who-v2" id="who">
+
+    <div class="who-v2__header">
+      <span class="section-tag">Who I Work With</span>
+      <h2 class="who-v2__h">Industries I build<br><span class="text-orange">systems for.</span></h2>
+      <a href="portfolio.html" class="who-v2__all-btn">View All Works →</a>
+    </div>
+
+    <div class="who-v2__accordion">
+
+      <a class="who-panel" href="portfolio.html#hvac" style="--bg:url('https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">01</span>
+        <span class="who-panel__tag">HVAC</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">HVAC</h3>
+          <p class="who-panel__sub">Lead-to-booking automation. 12-touch follow-up. No-show recovery.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#roofing" style="--bg:url('https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">02</span>
+        <span class="who-panel__tag">Roofing</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Roofing</h3>
+          <p class="who-panel__sub">Pipeline from estimate request to signed job — fully automated.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#dental" style="--bg:url('https://images.unsplash.com/photo-1643660527083-5149b75387ca?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">03</span>
+        <span class="who-panel__tag">Dental</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Dental Clinics</h3>
+          <p class="who-panel__sub">Patient journey from first inquiry to confirmed appointment.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#medspa" style="--bg:url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">04</span>
+        <span class="who-panel__tag">Med Spas</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Med Spas</h3>
+          <p class="who-panel__sub">Rebooking automation, VIP nurture campaigns, and retention flows.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#realestate" style="--bg:url('https://images.unsplash.com/photo-1757359056339-22968344cce6?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">05</span>
+        <span class="who-panel__tag">Real Estate</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Real Estate</h3>
+          <p class="who-panel__sub">High-value lead nurture with CRM pipelines built for long cycles.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#solar" style="--bg:url('https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">06</span>
+        <span class="who-panel__tag">Solar</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Solar</h3>
+          <p class="who-panel__sub">Multi-touch follow-up before leads go cold. Appointment funnels built to convert.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#homeservices" style="--bg:url('https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">07</span>
+        <span class="who-panel__tag">Home Services</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Home Services</h3>
+          <p class="who-panel__sub">Automated workflows for every job type — quotes, bookings, follow-ups.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+      <a class="who-panel" href="portfolio.html#local" style="--bg:url('https://images.unsplash.com/photo-1761208158937-9f30aaea46b1?auto=format&fit=crop&w=900&q=80')">
+        <div class="who-panel__overlay"></div>
+        <span class="who-panel__num">08</span>
+        <span class="who-panel__tag">Local Services</span>
+        <div class="who-panel__body">
+          <h3 class="who-panel__name">Local Services</h3>
+          <p class="who-panel__sub">End-to-end CRM automation. Every lead tracked. Nothing lost.</p>
+          <span class="who-panel__btn">View Case Study →</span>
+        </div>
+      </a>
+
+    </div>
+
+  </section><!-- /who-v2 -->
+
+  <!-- TOOLS I USE TO SHIP -->
+  <section class="tools-block" id="tools-block">
+    <div class="tools-block__inner">
+      <div class="cl-bg-text" aria-hidden="true">BUILT FOR FREEDOM.</div>
+
+      <!-- Col 1: Headline + name pills -->
+      <div class="tools-block__left">
+        <span class="section-tag">Stack</span>
+        <h2 class="tools-block__h">Tools I use<br><span class="text-orange">to ship.</span></h2>
+        <div class="tools-block__names">
+          <span class="kc-name kc-name--active" data-kc="0">Canva</span>
+          <span class="kc-name" data-kc="1">GoHighLevel</span>
+          <span class="kc-name" data-kc="2">Claude.ai</span>
+          <span class="kc-name" data-kc="3">CraftLab</span>
+        </div>
+        <p class="tools-block__scroll-hint">Scroll to explore ↓</p>
+      </div>
+
+      <!-- Col 2: Keychain carousel -->
+      <div class="tools-block__center">
+        <div class="kc-wheel" id="kc-wheel">
+          <img class="keychain-item" src="images/keychains/canva keychain.png" alt="Canva" />
+          <img class="keychain-item" src="images/keychains/highlevel keychain (1).png" alt="GoHighLevel" />
+          <img class="keychain-item" src="images/keychains/Claide keychain.png" alt="Claude.ai" />
+          <img class="keychain-item" src="images/Keychains/Craftlab Keychain.png" alt="CraftLab" />
+        </div>
+      </div>
+
+      <!-- Col 3: Tool description -->
+      <div class="tools-block__right">
+        <span class="kc-active-label" id="kc-active-label">Canva</span>
+        <p class="kc-active-desc" id="kc-active-desc">I use Canva to build every client-facing asset — proposals, onboarding decks, social content, and branded templates. Everything looks polished before the first meeting ends.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Deliverables + Booking -->
+  <section class="dlv-section" id="booking">
+    <div class="dlv-section__inner">
+
+      <!-- Left: What Gets Built -->
+      <div class="dlv-left">
+        <span class="dlv-tag">Deliverables</span>
+        <h2 class="dlv-h">What actually gets<br><span style="color:var(--orange)">built in the lab.</span></h2>
+        <div class="dlv-grid">
+          <div class="dlv-item"><span class="dlv-num">01</span><span class="dlv-name">CRM Setup &amp; Sales Pipeline</span></div>
+          <div class="dlv-item"><span class="dlv-num">06</span><span class="dlv-name">Appointment Booking Workflow</span></div>
+          <div class="dlv-item"><span class="dlv-num">02</span><span class="dlv-name">Lead Management System</span></div>
+          <div class="dlv-item"><span class="dlv-num">07</span><span class="dlv-name">Confirmation &amp; SMS Reminders</span></div>
+          <div class="dlv-item"><span class="dlv-num">03</span><span class="dlv-name">12-Touch SMS Follow-Up</span></div>
+          <div class="dlv-item"><span class="dlv-num">08</span><span class="dlv-name">No-Show Recovery Sequence</span></div>
+          <div class="dlv-item"><span class="dlv-num">04</span><span class="dlv-name">12-Touch Email Follow-Up</span></div>
+          <div class="dlv-item"><span class="dlv-num">09</span><span class="dlv-name">6-Month Nurture Campaign</span></div>
+          <div class="dlv-item"><span class="dlv-num">05</span><span class="dlv-name">Internal Team Notifications</span></div>
+          <div class="dlv-item"><span class="dlv-num">10</span><span class="dlv-name">Reporting Dashboard</span></div>
+        </div>
+      </div>
+
+      <!-- Right: Your Next Step -->
+      <div class="dlv-right">
+        <span class="dlv-right-label">Your Next Step</span>
+        <p class="dlv-right-desc">In 30 minutes, I'll map your current lead flow, show you exactly where revenue is leaking, and hand you a clear system blueprint that fixes it. Whether we work together or not — you leave with a plan worth acting on.</p>
+        <a href="booking.html" class="dlv-btn">Book Your Free Audit →</a>
+        <div class="dlv-guarantee">
+          <span class="dlv-guarantee__icon">✦</span>
+          <div>
+            <p class="dlv-guarantee__title">30-Day Delivery Guarantee</p>
+            <p class="dlv-guarantee__text">Your complete system goes live within 30 days. Built, tested, and handed over. We don't miss deadlines. That's not a policy — it's how we work.</p>
+          </div>
+        </div>
+        <p class="dlv-scarcity">— Only 3 client spots open per month —</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Stats Band -->
+  <section class="cta-stats-band">
+    <div class="cta-stat">
+      <span class="cta-stat__num">5 min</span>
+      <span class="cta-stat__label">First follow-up after every lead submission</span>
+    </div>
+    <div class="cta-stat__div"></div>
+    <div class="cta-stat">
+      <span class="cta-stat__num">12×</span>
+      <span class="cta-stat__label">Automated touchpoints over 90 days</span>
+    </div>
+    <div class="cta-stat__div"></div>
+    <div class="cta-stat">
+      <span class="cta-stat__num">100%</span>
+      <span class="cta-stat__label">Done-for-you. You focus on the work, we build the system</span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="images/Craftlab logo.png" alt="CraftLab." class="footer__logo-img" />
+        </div>
+        <nav class="footer__nav">
+          <a href="#system">System</a>
+          <a href="#process">Process</a>
+          <a href="#who">Industries</a>
+          <a href="portfolio.html">All Works</a>
+          <a href="#about">About</a>
+          <a href="booking.html">Book Audit</a>
+        </nav>
+      </div>
+      <div class="footer__line"></div>
+      <div class="footer__bottom">
+        <span>© 2026 CraftLab. All rights reserved.</span>
+        <a href="mailto:william@craftlab.com">william@craftlab.com</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- GSAP core + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js?v=89" defer></script>
+
+  <!-- RIGHT SIDE NAV -->
+  <nav class="rnav" id="rnav" aria-label="Section navigation">
+    <a href="#home"        class="rnav__item active" data-section="home"    aria-label="Home">
+      <i class="ph ph-house"></i>
+      <span class="rnav__tip">Home</span>
+    </a>
+    <a href="#system"      class="rnav__item"        data-section="system"  aria-label="System">
+      <i class="ph ph-gear"></i>
+      <span class="rnav__tip">System</span>
+    </a>
+    <a href="#process"     class="rnav__item"        data-section="process" aria-label="Process">
+      <i class="ph ph-arrows-clockwise"></i>
+      <span class="rnav__tip">Process</span>
+    </a>
+    <a href="#who"         class="rnav__item"        data-section="who"     aria-label="Industries">
+      <i class="ph ph-buildings"></i>
+      <span class="rnav__tip">Industries</span>
+    </a>
+    <a href="portfolio.html" class="rnav__item"                               aria-label="All Works">
+      <i class="ph ph-briefcase"></i>
+      <span class="rnav__tip">All Works</span>
+    </a>
+    <a href="#about"       class="rnav__item"        data-section="about"   aria-label="About">
+      <i class="ph ph-user"></i>
+      <span class="rnav__tip">About</span>
+    </a>
+    <a href="booking.html" class="rnav__item"                               aria-label="Book Audit">
+      <i class="ph ph-calendar-check"></i>
+      <span class="rnav__tip">Book Audit</span>
+    </a>
+  </nav>
+
+</body>
+</html>

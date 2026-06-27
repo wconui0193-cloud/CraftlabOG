@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>All Works — CraftLab.</title>
+  <meta name="description" content="GoHighLevel automation systems built for service businesses across the US and Australia. Every project starts with a process map." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css?v=166" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+
+  <style>
+    @font-face {
+      font-family: 'QanelasHeavy';
+      src: url('Fonts/qanelas-vveb-f0nts/OTF/Qanelas-Heavy.otf') format('opentype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ══════════════════════════════════════
+       PORTFOLIO PAGE
+    ══════════════════════════════════════ */
+
+    /* ── Page ── */
+    body { background: #0B0B0E; }
+
+    /* ── Header ── */
+    .port-header {
+      background: #0B0B0E;
+      padding: 118px 5% 56px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .port-header__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: flex-end;
+    }
+    .port-header__h {
+      font-family: 'QanelasHeavy', 'Kamerik105', 'Barlow Condensed', sans-serif;
+      font-size: clamp(60px, 9vw, 136px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      margin: 16px 0 0;
+    }
+    .port-header__right {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .port-header__desc {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(14px, 1.2vw, 17px);
+      color: rgba(246,247,248,0.5);
+      line-height: 1.8;
+      max-width: 46ch;
+    }
+    .port-header__stats {
+      display: flex;
+      gap: 44px;
+    }
+    .port-stat { display: flex; flex-direction: column; gap: 5px; }
+    .port-stat__n {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      color: #FF6A00;
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .port-stat__l {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(246,247,248,0.28);
+    }
+
+    /* ── Grid ── */
+    .port-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      background: #0B0B0E;
+      padding: 40px 5% 64px;
+    }
+
+    /* ── Card — square, image fills entire card ── */
+    .port-card {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      overflow: hidden;
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      will-change: transform;
+    }
+
+    /* Full-bleed image */
+    .port-card__img {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+    .port-card__img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      will-change: transform;
+    }
+
+    /* Bar — compact floating pill, anchored top-left, expands on hover */
+    .port-card__bar {
+      position: absolute;
+      top: 14px;
+      left: 12px;
+      right: auto;          /* collapses to content width */
+      min-width: 0;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      background: rgba(13,13,16,0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-radius: 12px;
+      border: 1px solid rgba(255,106,0,0.28);
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      white-space: nowrap;
+    }
+    .port-card:hover .port-card__bar {
+      border-color: rgba(255,106,0,0.55);
+      box-shadow: 0 0 0 3px rgba(255,106,0,0.08);
+    }
+
+    /* Top row — name left, label (category + year) adjacent right of name */
+    .port-card__bar-top {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 14px 18px;
+      flex-shrink: 0;
+    }
+    .port-card__name {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(16px, 1.7vw, 22px);
+      font-weight: 900;
+      color: #f0f0f0;
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    /* thin divider between name and label */
+    .port-card__bar-divider {
+      width: 1px;
+      height: 22px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    .port-card__label {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1px;
+    }
+    .port-card__cat {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: rgba(246,247,248,0.38);
+      line-height: 1;
+    }
+    .port-card__year {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: rgba(246,247,248,0.28);
+      line-height: 1;
+    }
+
+    /* Expand body — height 0, GSAP opens it */
+    .port-card__bar-body {
+      overflow: hidden;
+      height: 0;
+    }
+    /* DISCOVER CASE — bottom RIGHT */
+    .port-card__bar-body-inner {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
+      padding: 20px 14px 14px;
+      min-height: 52px;
+    }
+    .port-card__discover {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(13px, 1.4vw, 17px);
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: #fff;
+      text-decoration: none;
+      display: inline-block;
+      transition: color 0.3s ease;
+    }
+    .port-card__discover:visited { color: #fff; }
+    .port-card__discover:hover { color: #FF6A00; }
+
+    /* ── CTA Band ── */
+    .port-cta {
+      background: #0B0B0E;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 80px 5% 100px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+    .port-cta__left { flex: 1; min-width: 0; }
+    .port-cta__eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #FF6A00;
+      margin-bottom: 14px;
+    }
+    .port-cta__h {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(40px, 6vw, 90px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      line-height: 0.92;
+      margin: 0;
+    }
+    .port-cta__btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #FF6A00;
+      color: #fff;
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(13px, 1.1vw, 15px);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      padding: 18px 36px;
+      border-radius: 100px;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+      box-shadow: 0 8px 40px rgba(255,106,0,0.3);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .port-cta__btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 52px rgba(255,106,0,0.45);
+    }
+    .port-cta__btn svg { flex-shrink: 0; }
+
+    /* ── Minimal footer ── */
+    .port-foot {
+      background: #0B0B0E;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 28px 5%;
+      display: flex;
+      align-items: center;
+    }
+    .port-foot__copy {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(13px, 1.2vw, 16px);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      color: rgba(246,247,248,0.22);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .port-header__inner { grid-template-columns: 1fr; gap: 24px; }
+      .port-header { padding: 100px 6% 44px; }
+    }
+    @media (max-width: 640px) {
+      .port-grid { grid-template-columns: 1fr; }
+      .port-cta  { flex-direction: column; align-items: flex-start; }
+      .port-header__stats { gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav" id="nav">
+    <div class="nav__strip">
+      <a href="index.html" class="nav__icon-mark" id="navLogoBtn" aria-label="Home">C.</a>
+      <span class="nav__brand">CraftLab.</span>
+      <div class="nav__socials">
+        <a href="https://linkedin.com" class="nav__social" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://instagram.com" class="nav__social" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://facebook.com" class="nav__social" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+      <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+        <svg class="nav__ico nav__ico--bars" width="20" height="13" viewBox="0 0 20 13" fill="none" aria-hidden="true">
+          <rect width="20" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect y="5.75" width="20" height="1.5" rx="0.75" fill="currentColor"/>
+          <rect y="11.5" width="20" height="1.5" rx="0.75" fill="currentColor"/>
+        </svg>
+        <svg class="nav__ico nav__ico--x" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <line x1="1" y1="1" x2="13" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="13" y1="1" x2="1" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <span class="nav__toggle-label">MENU</span>
+      </button>
+    </div>
+
+    <div class="nav__panel" id="navPanel">
+      <div class="nav__panel-logo">
+        <img src="images/Craftlab logo.png" alt="CraftLab." />
+      </div>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#system">System</a></li>
+        <li><a href="index.html#who">Industries</a></li>
+        <li><a href="portfolio.html" class="active">All Works</a></li>
+        <li><a href="booking.html">Book Audit</a></li>
+      </ul>
+      <div class="nav__panel-foot">
+        <div class="nav__panel-rule"></div>
+        <a href="mailto:praktisaiden@gmail.com" class="nav__email">praktisaiden@gmail.com</a>
+      </div>
+    </div>
+  </nav>
+  <div class="nav__overlay" id="navOverlay"></div>
+
+  <!-- ── PORTFOLIO HEADER ── -->
+  <header class="port-header">
+    <div class="port-header__inner">
+      <div class="port-header__left">
+        <span class="section-tag">Portfolio</span>
+        <h1 class="port-header__h">All Works.</h1>
+      </div>
+      <div class="port-header__right">
+        <p class="port-header__desc">GoHighLevel automation systems built for service businesses across the US and Australia. Every project starts with a process map — no templates, no guessing.</p>
+        <div class="port-header__stats">
+          <div class="port-stat">
+            <span class="port-stat__n">8</span>
+            <span class="port-stat__l">Systems Built</span>
+          </div>
+          <div class="port-stat">
+            <span class="port-stat__n">30</span>
+            <span class="port-stat__l">Days to Live</span>
+          </div>
+          <div class="port-stat">
+            <span class="port-stat__n">2</span>
+            <span class="port-stat__l">Markets</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── PORTFOLIO GRID ── -->
+  <main class="port-grid">
+
+    <!-- 01: HVAC -->
+    <article class="port-card" id="hvac">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=900&q=80" alt="HVAC" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">HVAC</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">Lead Automation</span><span class="port-card__year">2025</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-hvac.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 02: Roofing -->
+    <article class="port-card" id="roofing">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" alt="Roofing" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Roofing</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">Estimate-to-Close</span><span class="port-card__year">2025</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-roofing.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 03: Dental -->
+    <article class="port-card" id="dental">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1643660527083-5149b75387ca?auto=format&fit=crop&w=900&q=80" alt="Dental" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Dental Clinics</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">Patient Journey</span><span class="port-card__year">2025</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-dental.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 04: Med Spas -->
+    <article class="port-card" id="medspa">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="Med Spas" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Med Spas</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">VIP Nurture</span><span class="port-card__year">2025</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-medspa.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 05: Real Estate -->
+    <article class="port-card" id="realestate">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1757359056339-22968344cce6?auto=format&fit=crop&w=900&q=80" alt="Real Estate" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Real Estate</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">Lead Nurture</span><span class="port-card__year">2024</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-realestate.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 06: Solar -->
+    <article class="port-card" id="solar">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=900&q=80" alt="Solar" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Solar</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">Appt Funnel</span><span class="port-card__year">2024</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-solar.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 07: Home Services -->
+    <article class="port-card" id="homeservices">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?auto=format&fit=crop&w=900&q=80" alt="Home Services" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Home Services</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">Quote-to-Book</span><span class="port-card__year">2024</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-homeservices.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+    <!-- 08: Local Services -->
+    <article class="port-card" id="local">
+      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1761208158937-9f30aaea46b1?auto=format&fit=crop&w=900&q=80" alt="Local Services" /></div>
+      <div class="port-card__bar">
+        <div class="port-card__bar-top">
+          <h2 class="port-card__name">Local Services</h2>
+          <div class="port-card__bar-divider"></div>
+          <div class="port-card__label"><span class="port-card__cat">End-to-End CRM</span><span class="port-card__year">2024</span></div>
+        </div>
+        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-local.html" class="port-card__discover">Discover Case</a></div></div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- ── CTA BAND ── -->
+  <section class="port-cta" id="port-cta">
+    <div class="port-cta__left">
+      <p class="port-cta__eyebrow">Next Step</p>
+      <h2 class="port-cta__h">Ready to build<br><span style="color:#FF6A00">yours?</span></h2>
+    </div>
+    <a href="booking.html" class="port-cta__btn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.01 1.18 2 2 0 012 .01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/>
+      </svg>
+      Book a Discovery Call
+    </a>
+  </section>
+
+  <!-- ── MINIMAL COPYRIGHT FOOTER ── -->
+  <footer class="port-foot">
+    <span class="port-foot__copy">© 2026 CraftLab.</span>
+  </footer>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    // Nav toggle
+    (function() {
+      var nav     = document.getElementById('nav');
+      var toggle  = document.getElementById('navToggle');
+      var overlay = document.getElementById('navOverlay');
+      if (!toggle) return;
+      function close() {
+        nav.classList.remove('nav--open');
+        overlay.classList.remove('active');
+      }
+      toggle.addEventListener('click', function() {
+        var open = nav.classList.toggle('nav--open');
+        overlay.classList.toggle('active', open);
+      });
+      overlay.addEventListener('click', close);
+      document.querySelectorAll('.nav__links a').forEach(function(a) { a.addEventListener('click', close); });
+      document.getElementById('navLogoBtn').addEventListener('click', close);
+    }());
+
+    // Card hover + scroll reveal
+    (function() {
+      if (typeof gsap === 'undefined') return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Header entrance
+      gsap.from('.port-header__h',     { opacity: 0, y: 36, duration: 0.9,  ease: 'power2.out', delay: 0.1  });
+      gsap.from('.port-header__right', { opacity: 0, y: 24, duration: 0.75, ease: 'power2.out', delay: 0.26 });
+
+      document.querySelectorAll('.port-card').forEach(function(card, i) {
+
+        // ── Scroll reveal ──
+        gsap.from(card, {
+          opacity: 0, y: 40, duration: 0.7, ease: 'power2.out',
+          delay: (i % 2) * 0.12,
+          scrollTrigger: { trigger: card, start: 'top 88%', toggleActions: 'play none none none' }
+        });
+
+        // ── Bar expand on hover ──
+        var img      = card.querySelector('.port-card__img img');
+        var bar      = card.querySelector('.port-card__bar');
+        var body     = card.querySelector('.port-card__bar-body');
+        var discover = card.querySelector('.port-card__discover');
+
+        // 1. Wrap discover in overflow:hidden clip FIRST (before measuring)
+        var clip = document.createElement('div');
+        clip.style.cssText = 'overflow:hidden;display:inline-block;line-height:1.1;vertical-align:bottom';
+        discover.parentNode.insertBefore(clip, discover);
+        clip.appendChild(discover);
+
+        // 2. Now measure with clip in place
+        var fullW = card.offsetWidth - 24;
+        gsap.set(body, { height: 'auto' });
+        var expandedH = body.offsetHeight;
+        gsap.set(body, { height: 0 });
+
+        // 3. Set initial hidden state — use px, not % (span offsetHeight unreliable)
+        var discH = clip.offsetHeight || 24;
+        clip.style.height = discH + 'px';
+        gsap.set(discover, { y: discH + 4 });
+
+        var tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+        tl.to(img,      { scale: 1.05, duration: 0.75 }, 0)
+          .to(bar,      { width: fullW, duration: 0.42 }, 0)
+          .to(body,     { height: expandedH, duration: 0.42 }, 0)
+          .to(discover, { y: '0%', duration: 0.5, ease: 'power4.out' }, 0.22);
+
+        card.addEventListener('mouseenter', function() { tl.play(); });
+        card.addEventListener('mouseleave', function() { tl.reverse(); });
+      });
+
+      // ── CTA heading entrance ──
+      gsap.from('.port-cta__h', {
+        opacity: 0, y: 60, duration: 1.1, ease: 'power3.out',
+        scrollTrigger: { trigger: '#port-cta', start: 'top 80%', toggleActions: 'play none none none' }
+      });
+    }());
+  </script>
+
+  <!-- Right side nav -->
+  <nav class="rnav" id="rnav" aria-label="Page navigation">
+    <a href="index.html" class="rnav__item" aria-label="Home">
+      <i class="ph ph-house"></i>
+      <span class="rnav__tip">Home</span>
+    </a>
+    <a href="portfolio.html" class="rnav__item active" aria-label="All Works">
+      <i class="ph ph-briefcase"></i>
+      <span class="rnav__tip">All Works</span>
+    </a>
+    <a href="booking.html" class="rnav__item" aria-label="Book Audit">
+      <i class="ph ph-calendar-check"></i>
+      <span class="rnav__tip">Book Audit</span>
+    </a>
+  </nav>
+
+</body>
+</html>

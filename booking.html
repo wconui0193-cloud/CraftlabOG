@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Free Automation Audit — CraftLab.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+  <nav class="bk-nav">
+    <a href="index.html" class="bk-nav__logo">CraftLab<span>.</span></a>
+    <span class="bk-nav__badge">Free Automation Audit · 30 min</span>
+  </nav>
+
+  <main class="bk-main">
+
+    <!-- LEFT: orange info panel -->
+    <aside class="bk-info">
+      <div class="bk-info__inner">
+
+        <div class="bk-info__tag">
+          <span></span>FREE CONSULTATION
+        </div>
+
+        <h1 class="bk-info__h1">30 minutes.<br>Zero pressure.</h1>
+
+        <p class="bk-info__lead">
+          A straightforward conversation about your business and where leads are falling through the cracks.
+        </p>
+
+        <div class="bk-info__divider"></div>
+
+        <p class="bk-info__label">WHAT WE'LL COVER</p>
+        <ul class="bk-info__list">
+          <li>Your current lead management process</li>
+          <li>Where opportunities are slipping through</li>
+          <li>What a custom automation system looks like</li>
+          <li>Next steps — only if it's the right fit</li>
+        </ul>
+
+        <div class="bk-info__divider"></div>
+
+        <div class="bk-info__host">
+          <div class="bk-info__host-icon">W</div>
+          <div>
+            <p class="bk-info__host-name">William Con-ui</p>
+            <p class="bk-info__host-role">GoHighLevel Automation Specialist</p>
+          </div>
+        </div>
+
+        <div class="bk-info__meta">
+          <div class="bk-info__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            30 minute call
+          </div>
+          <div class="bk-info__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Video or phone
+          </div>
+          <div class="bk-info__meta-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            No commitment
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- RIGHT: dark booking widget -->
+    <section class="bk-widget">
+      <div class="bk-widget__inner">
+
+        <!-- Step progress -->
+        <div class="bk-progress" id="bkProgress">
+          <div class="bk-progress__step active" data-step="1">
+            <div class="bk-progress__dot"><span>1</span></div>
+            <div class="bk-progress__label">Date</div>
+          </div>
+          <div class="bk-progress__line"></div>
+          <div class="bk-progress__step" data-step="2">
+            <div class="bk-progress__dot"><span>2</span></div>
+            <div class="bk-progress__label">Time</div>
+          </div>
+          <div class="bk-progress__line"></div>
+          <div class="bk-progress__step" data-step="3">
+            <div class="bk-progress__dot"><span>3</span></div>
+            <div class="bk-progress__label">Details</div>
+          </div>
+        </div>
+
+        <!-- Step 1: Calendar -->
+        <div class="bk-step-panel" id="panelDate">
+          <h2 class="bk-widget__title">Select a date</h2>
+          <div class="bk-cal" id="calendarWidget"></div>
+        </div>
+
+        <!-- Step 2: Time slots -->
+        <div class="bk-step-panel hidden" id="panelTime">
+          <div class="bk-panel-header">
+            <button class="bk-back" id="backToDate">← Back</button>
+            <div class="bk-selected-info" id="selectedDateDisplay"></div>
+          </div>
+          <h2 class="bk-widget__title">Select a time <span class="bk-tz">· Your local time</span></h2>
+          <div class="bk-slots" id="timeSlots"></div>
+        </div>
+
+        <!-- Step 3: Details form -->
+        <div class="bk-step-panel hidden" id="panelDetails">
+          <div class="bk-panel-header">
+            <button class="bk-back" id="backToTime">← Back</button>
+            <div class="bk-selected-info" id="selectedTimeDisplay"></div>
+          </div>
+          <h2 class="bk-widget__title">Your details</h2>
+          <form class="bk-form" id="bookingForm" novalidate>
+            <div class="bk-form__row">
+              <div class="bk-form__group">
+                <label class="bk-label">First Name <span>*</span></label>
+                <input class="bk-input" type="text" id="firstName" placeholder="John" required>
+              </div>
+              <div class="bk-form__group">
+                <label class="bk-label">Last Name <span>*</span></label>
+                <input class="bk-input" type="text" id="lastName" placeholder="Smith" required>
+              </div>
+            </div>
+            <div class="bk-form__group">
+              <label class="bk-label">Email Address <span>*</span></label>
+              <input class="bk-input" type="email" id="email" placeholder="john@company.com" required>
+            </div>
+            <div class="bk-form__group">
+              <label class="bk-label">Phone Number</label>
+              <input class="bk-input" type="tel" id="phone" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="bk-form__group">
+              <label class="bk-label">Business Type <span>*</span></label>
+              <select class="bk-input bk-select" id="bizType" required>
+                <option value="" disabled selected>Select your industry</option>
+                <option>HVAC</option>
+                <option>Roofing</option>
+                <option>Solar</option>
+                <option>Dental / Medical</option>
+                <option>Med Spa</option>
+                <option>Real Estate</option>
+                <option>Home Services</option>
+                <option>Plumbing</option>
+                <option>Electrical</option>
+                <option>Other Service Business</option>
+              </select>
+            </div>
+            <div class="bk-form__group">
+              <label class="bk-label">What's your biggest challenge right now?</label>
+              <textarea class="bk-input bk-textarea" id="challenge" placeholder="Briefly describe your current process and where you feel opportunities are slipping..." rows="3"></textarea>
+            </div>
+            <button type="submit" class="bk-submit">Build My System →</button>
+            <p class="bk-fine">No commitment. No pitch. You leave with a clear plan — whether we work together or not.</p>
+          </form>
+        </div>
+
+        <!-- Step 4: Confirmation -->
+        <div class="bk-step-panel hidden" id="panelConfirm">
+          <div class="bk-confirm">
+            <div class="bk-confirm__check">✓</div>
+            <h2 class="bk-confirm__title">You're booked.</h2>
+            <p class="bk-confirm__sub">
+              Check your inbox for a confirmation email.<br>
+              William will see you soon.
+            </p>
+            <div class="bk-confirm__summary" id="confirmSummary"></div>
+            <a href="index.html" class="bk-submit bk-submit--outline">← Back to CraftLab.</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script src="booking.js"></script>
+</body>
+</html>
