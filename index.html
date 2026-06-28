@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@700;800;900&display=swap" as="style" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,700&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=166" />
+  <link rel="stylesheet" href="style.css?v=173" />
   <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'" />
 </head>
 <body>
@@ -296,11 +296,11 @@
     </div><!-- /sc-track -->
   </section><!-- /system-cards -->
 
-  <!-- HOW IT WORKS — static two-column layout, no scrollytelling -->
+  <!-- HOW IT WORKS — two-column, scroll-synced -->
   <section class="proc-section" id="journey">
     <div class="proc-inner">
 
-      <!-- Left: header + step list -->
+      <!-- Left: step list with stories + scroll-triggered reveal -->
       <div class="proc-left">
         <span class="section-tag">How It Works</span>
         <h2 class="proc-hl">Here's How<br>We Build.</h2>
@@ -313,6 +313,7 @@
             <div class="proc-row__body">
               <div class="proc-row__title">Process Map.</div>
               <div class="proc-row__meta">Blueprint session — Day 1</div>
+              <p class="proc-row__story">Before we touch GoHighLevel, we spend Day 1 mapping your entire customer journey. Every lead source, every touchpoint, every gap where revenue leaks. This blueprint drives every decision that follows — nothing gets built without it.</p>
             </div>
             <div class="proc-row__phase">Blueprint</div>
           </div>
@@ -322,6 +323,7 @@
             <div class="proc-row__body">
               <div class="proc-row__title">CRM Built.</div>
               <div class="proc-row__meta">Built from scratch — Day 3–7</div>
+              <p class="proc-row__story">Your GoHighLevel account is built from scratch around the blueprint. Custom pipelines, lead stages, contact records, and tags — structured for your exact business, not recycled from a template. Every field, every stage, every view is intentional.</p>
             </div>
             <div class="proc-row__phase">Build</div>
           </div>
@@ -331,6 +333,7 @@
             <div class="proc-row__body">
               <div class="proc-row__title">Sequences Live.</div>
               <div class="proc-row__meta">12-touch follow-up — Day 7–21</div>
+              <p class="proc-row__story">12 SMS and email touchpoints go live across a 90-day cadence, triggered by where each lead sits in your pipeline. The average business follows up twice. Your system follows up 12 times — then hands the lead to a nurture campaign automatically.</p>
             </div>
             <div class="proc-row__phase">Automation</div>
           </div>
@@ -340,6 +343,7 @@
             <div class="proc-row__body">
               <div class="proc-row__title">System Tested.</div>
               <div class="proc-row__meta">End-to-end verified — Day 21–28</div>
+              <p class="proc-row__story">Every workflow is stress-tested with live lead scenarios before you ever see it. We trigger no-shows, cancellations, lost leads, and re-engagements until every edge case is handled. You don't touch a broken system.</p>
             </div>
             <div class="proc-row__phase">Testing</div>
           </div>
@@ -349,6 +353,7 @@
             <div class="proc-row__body">
               <div class="proc-row__title">You Approve.</div>
               <div class="proc-row__meta">You review &amp; sign off — Day 28–29</div>
+              <p class="proc-row__story">We walk through the complete system live on a screen share — every pipeline stage, every message, every automation. You see exactly what fires, when, and why. Nothing goes live until you sign off on it.</p>
             </div>
             <div class="proc-row__phase">Approval</div>
           </div>
@@ -358,14 +363,15 @@
             <div class="proc-row__body">
               <div class="proc-row__title">You're Live.</div>
               <div class="proc-row__meta">Training + 30-day support — Day 30</div>
+              <p class="proc-row__story">Your system launches. We run a live handover session, deliver full documentation, and stay available for 30 days of direct support. From this point, every new lead is captured, followed up, and booked — without you lifting a finger.</p>
             </div>
             <div class="proc-row__phase proc-row__phase--won">✓ Live on GHL</div>
           </div>
 
-        </div><!-- /proc-items -->
+        </div>
       </div><!-- /proc-left -->
 
-      <!-- Right: workflow diagram with cascade animation -->
+      <!-- Right: sticky j-flow-panel, synced by scroll -->
       <div class="proc-right">
         <div class="j-flow-panel j-flow-panel--static">
 
@@ -453,7 +459,7 @@
 
           <div class="j-fn__terminal" id="jTerminal"></div>
 
-        </div><!-- /j-flow-panel -->
+        </div>
       </div><!-- /proc-right -->
 
     </div><!-- /proc-inner -->
@@ -641,7 +647,7 @@
   <!-- GSAP core + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="script.js?v=101" defer></script>
+  <script src="script.js?v=107" defer></script>
 
   <!-- RIGHT SIDE NAV -->
   <nav class="rnav" id="rnav" aria-label="Section navigation">

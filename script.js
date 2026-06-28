@@ -330,74 +330,77 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 }());
 
-// ── HOW IT WORKS — IntersectionObserver cascade (no scrollytelling, no pin, no GSAP) ──
+// ── HOW IT WORKS — pure CSS + IntersectionObserver (no GSAP, tab-safe) ──
 (function initProcFlow() {
   var section = document.getElementById('journey');
   if (!section) return;
 
-  // Left-side rows: stagger-reveal on scroll entry
-  var rows = Array.from(section.querySelectorAll('.proc-row'));
-  if (rows.length) {
-    var rowObs = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          rowObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1, rootMargin: '0px 0px -32px 0px' });
-    rows.forEach(function(row) { rowObs.observe(row); });
-  }
-
-  // Right-side flow panel: cascade each node active → done on section entry
+  var rows       = Array.from(section.querySelectorAll('.proc-row'));
   var nodes      = Array.from(section.querySelectorAll('.j-fn'));
   var connectors = Array.from(section.querySelectorAll('.j-fn__connector'));
   var fills      = Array.from(section.querySelectorAll('.j-fn__fill'));
   var terminal   = section.querySelector('.j-fn__terminal');
-  if (!nodes.length) return;
 
-  var played = false;
-  var panelObs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !played) {
-        played = true;
-        panelObs.disconnect();
-        cascade(nodes, connectors, fills, terminal);
-      }
+  if (!rows.length || !nodes.length) return;
+
+  var activeIdx = -1;
+
+  function activateNode(idx) {
+    if (idx === activeIdx) return;
+    activeIdx = idx;
+
+    rows.forEach(function(row, i) {
+      row.classList.toggle('proc-row--active', i === idx);
     });
-  }, { threshold: 0.2 });
-  panelObs.observe(section);
-
-  function cascade(nodes, connectors, fills, terminal) {
-    var STEP = 620; // ms between node activations
 
     nodes.forEach(function(node, i) {
-      // Activate this node
-      setTimeout(function() {
-        if (i > 0) {
-          nodes[i - 1].classList.remove('j-fn--active');
-          nodes[i - 1].classList.add('j-fn--done');
-          if (fills[i - 1]) fills[i - 1].style.height = '100%';
-          if (connectors[i - 1]) connectors[i - 1].classList.add('j-fn__connector--lit');
-        }
-        node.classList.add('j-fn--active');
-      }, i * STEP);
+      node.classList.remove('j-fn--active', 'j-fn--done');
+      if      (i < idx)   node.classList.add('j-fn--done');
+      else if (i === idx) node.classList.add('j-fn--active');
+    });
 
-      // Start partial connector fill under this node mid-step
-      if (fills[i]) {
-        setTimeout(function() { fills[i].style.height = '55%'; }, i * STEP + STEP * 0.45);
+    connectors.forEach(function(conn, i) {
+      var fill = fills[i];
+      if (i < idx) {
+        conn.classList.add('j-fn__connector--lit');
+        if (fill) fill.style.height = '100%';
+      } else if (i === idx) {
+        conn.classList.add('j-fn__connector--lit');
+        if (fill) fill.style.height = '50%';
+      } else {
+        conn.classList.remove('j-fn__connector--lit');
+        if (fill) fill.style.height = '0%';
       }
     });
 
-    // Finish last node + light terminal
-    setTimeout(function() {
-      var last = nodes[nodes.length - 1];
-      if (last) { last.classList.remove('j-fn--active'); last.classList.add('j-fn--done'); }
-      if (fills[fills.length - 1]) fills[fills.length - 1].style.height = '100%';
-      if (connectors[connectors.length - 1]) connectors[connectors.length - 1].classList.add('j-fn__connector--lit');
-      if (terminal) terminal.classList.add('j-fn__terminal--lit');
-    }, nodes.length * STEP);
+    if (terminal) terminal.classList.toggle('j-fn__terminal--lit', idx >= nodes.length - 1);
   }
+
+  // Reveal: CSS transition triggered by class, one-shot per row
+  var revealObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  rows.forEach(function(row) { revealObs.observe(row); });
+
+  // Sync: whichever row is in the center 30% of the viewport activates its node
+  var visible = new Set();
+  var syncObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      var idx = rows.indexOf(entry.target);
+      if (idx < 0) return;
+      if (entry.isIntersecting) visible.add(idx);
+      else visible.delete(idx);
+    });
+    if (visible.size > 0) activateNode(Math.min.apply(null, Array.from(visible)));
+  }, { threshold: 0, rootMargin: '-35% 0px -35% 0px' });
+
+  rows.forEach(function(row) { syncObs.observe(row); });
 }());
 
 
