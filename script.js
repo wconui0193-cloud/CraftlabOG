@@ -1002,3 +1002,15 @@ fadeEls.forEach(el => observer.observe(el));
     }
   );
 }());
+
+// ── BACK TO TOP — reveal when near bottom ──
+(function() {
+  var btn = document.getElementById('backToTop');
+  if (!btn) return;
+  function onScroll() {
+    var scrolled = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+    btn.classList.toggle('visible', scrolled >= 0.99);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+}());
+

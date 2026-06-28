@@ -33,13 +33,18 @@
     .port-header {
       background: #0B0B0E;
       padding: 118px 5% 56px;
-      border-bottom: 1px solid rgba(255,255,255,0.07);
     }
     .port-header__inner {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 56px;
       align-items: flex-end;
+    }
+    .port-header__left {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
     }
     .port-header__h {
       font-family: 'QanelasHeavy', 'Kamerik105', 'Barlow Condensed', sans-serif;
@@ -62,25 +67,55 @@
       line-height: 1.8;
       max-width: 46ch;
     }
-    .port-header__stats {
+
+
+    /* ── Force rnav to match homepage size ── */
+    .rnav { right: 20px; gap: 8px; padding: 0; background: none; border: none; }
+    .rnav__item { width: 52px; height: 52px; font-size: 24px; }
+
+    /* ── Filter Nav ── */
+    .port-filter {
+      background: #0B0B0E;
+      padding: 0 5% 36px;
       display: flex;
-      gap: 44px;
+      align-items: center;
+      gap: 6px;
     }
-    .port-stat { display: flex; flex-direction: column; gap: 5px; }
-    .port-stat__n {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 34px;
+    .port-filter__btn {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(12px, 1.1vw, 14px);
       font-weight: 900;
-      color: #FF6A00;
-      line-height: 1;
-      letter-spacing: -0.02em;
-    }
-    .port-stat__l {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(246,247,248,0.28);
+      color: rgba(246,247,248,0.38);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 100px;
+      padding: 10px 22px;
+      cursor: pointer;
+      transition: color 0.2s, background 0.2s, border-color 0.2s;
+    }
+    .port-filter__btn:hover {
+      color: rgba(246,247,248,0.85);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.18);
+    }
+    .port-filter__btn.active {
+      color: #FF6A00;
+      background: rgba(255,106,0,0.1);
+      border-color: rgba(255,106,0,0.4);
+    }
+
+    /* ── Sections carousel ── */
+    .port-sections-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .port-section {
+      display: none;
+    }
+    .port-section.active {
+      display: block;
     }
 
     /* ── Grid ── */
@@ -90,6 +125,36 @@
       gap: 18px;
       background: #0B0B0E;
       padding: 40px 5% 64px;
+    }
+
+    /* ── Placeholder card ── */
+    .port-card--placeholder {
+      background: rgba(255,255,255,0.03);
+      border: 1.5px dashed rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: default;
+    }
+    .port-card--placeholder:hover { border-color: rgba(255,106,0,0.35); }
+    .port-placeholder__inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+    .port-placeholder__icon {
+      font-size: 36px;
+      color: rgba(255,255,255,0.12);
+      line-height: 1;
+    }
+    .port-placeholder__label {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.15);
     }
 
     /* ── Card — square, image fills entire card ── */
@@ -224,14 +289,13 @@
     /* ── CTA Band ── */
     .port-cta {
       background: #0B0B0E;
-      border-top: 1px solid rgba(255,255,255,0.07);
       padding: 80px 5% 100px;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 48px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 36px;
     }
-    .port-cta__left { flex: 1; min-width: 0; }
+    .port-cta__left { min-width: 0; }
     .port-cta__eyebrow {
       font-family: 'Montserrat', sans-serif;
       font-size: 11px;
@@ -276,22 +340,24 @@
     }
     .port-cta__btn svg { flex-shrink: 0; }
 
-    /* ── Minimal footer ── */
-    .port-foot {
-      background: #0B0B0E;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 28px 5%;
-      display: flex;
+    /* ── Back button ── */
+    .port-back {
+      display: inline-flex;
       align-items: center;
-    }
-    .port-foot__copy {
+      gap: 10px;
       font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
-      font-size: clamp(13px, 1.2vw, 16px);
+      font-size: 13px;
       font-weight: 900;
-      letter-spacing: -0.01em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(246,247,248,0.22);
+      color: rgba(246,247,248,0.55);
+      text-decoration: none;
+      padding: 14px 0;
+      transition: color 0.2s;
     }
+    .port-back:hover { color: #FF6A00; }
+    .port-back svg { transition: transform 0.2s; }
+    .port-back:hover svg { transform: translateX(-4px); }
 
     /* ── Responsive ── */
     @media (max-width: 900px) {
@@ -301,7 +367,6 @@
     @media (max-width: 640px) {
       .port-grid { grid-template-columns: 1fr; }
       .port-cta  { flex-direction: column; align-items: flex-start; }
-      .port-header__stats { gap: 28px; }
     }
   </style>
 </head>
@@ -311,137 +376,165 @@
   <header class="port-header">
     <div class="port-header__inner">
       <div class="port-header__left">
-        <span class="section-tag">Portfolio</span>
+        <a href="index.html" class="port-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+          Back to Home
+        </a>
         <h1 class="port-header__h">All Works.</h1>
       </div>
       <div class="port-header__right">
         <p class="port-header__desc">GoHighLevel automation systems built for service businesses across the US and Australia. Every project starts with a process map — no templates, no guessing.</p>
-        <div class="port-header__stats">
-          <div class="port-stat">
-            <span class="port-stat__n">8</span>
-            <span class="port-stat__l">Systems Built</span>
-          </div>
-          <div class="port-stat">
-            <span class="port-stat__n">30</span>
-            <span class="port-stat__l">Days to Live</span>
-          </div>
-          <div class="port-stat">
-            <span class="port-stat__n">2</span>
-            <span class="port-stat__l">Markets</span>
-          </div>
-        </div>
       </div>
     </div>
   </header>
 
-  <!-- ── PORTFOLIO GRID ── -->
-  <main class="port-grid">
+  <!-- ── FILTER NAV ── -->
+  <nav class="port-filter" id="portFilter">
+    <button class="port-filter__btn active" data-filter="all">Featured Work</button>
+    <button class="port-filter__btn" data-filter="automations">Automations</button>
+    <button class="port-filter__btn" data-filter="funnels">Funnels</button>
+    <button class="port-filter__btn" data-filter="websites">Websites</button>
+  </nav>
 
-    <!-- 01: HVAC -->
-    <article class="port-card" id="hvac">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=900&q=80" alt="HVAC" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">HVAC</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">Lead Automation</span><span class="port-card__year">2025</span></div>
+  <div class="port-sections-wrap" id="portSectionsWrap">
+
+  <!-- ── FEATURED WORK (default) ── -->
+  <div class="port-section active" id="section-all">
+    <main class="port-grid">
+      <article class="port-card" id="hvac">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=900&q=80" alt="HVAC" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">HVAC</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Lead Automation</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-hvac.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-hvac.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 02: Roofing -->
-    <article class="port-card" id="roofing">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" alt="Roofing" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Roofing</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">Estimate-to-Close</span><span class="port-card__year">2025</span></div>
+      </article>
+      <article class="port-card" id="roofing">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" alt="Roofing" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Roofing</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Estimate-to-Close</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-roofing.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-roofing.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 03: Dental -->
-    <article class="port-card" id="dental">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1643660527083-5149b75387ca?auto=format&fit=crop&w=900&q=80" alt="Dental" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Dental Clinics</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">Patient Journey</span><span class="port-card__year">2025</span></div>
+      </article>
+      <article class="port-card" id="dental">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1643660527083-5149b75387ca?auto=format&fit=crop&w=900&q=80" alt="Dental" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Dental Clinics</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Patient Journey</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-dental.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-dental.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 04: Med Spas -->
-    <article class="port-card" id="medspa">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="Med Spas" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Med Spas</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">VIP Nurture</span><span class="port-card__year">2025</span></div>
+      </article>
+      <article class="port-card" id="medspa">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="Med Spas" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Med Spas</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">VIP Nurture</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-medspa.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-medspa.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 05: Real Estate -->
-    <article class="port-card" id="realestate">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1757359056339-22968344cce6?auto=format&fit=crop&w=900&q=80" alt="Real Estate" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Real Estate</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">Lead Nurture</span><span class="port-card__year">2024</span></div>
+      </article>
+      <article class="port-card" id="realestate">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1757359056339-22968344cce6?auto=format&fit=crop&w=900&q=80" alt="Real Estate" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Real Estate</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Lead Nurture</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-realestate.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-realestate.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 06: Solar -->
-    <article class="port-card" id="solar">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=900&q=80" alt="Solar" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Solar</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">Appt Funnel</span><span class="port-card__year">2024</span></div>
+      </article>
+      <article class="port-card" id="solar">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=900&q=80" alt="Solar" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Solar</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Appt Funnel</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-solar.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-solar.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 07: Home Services -->
-    <article class="port-card" id="homeservices">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?auto=format&fit=crop&w=900&q=80" alt="Home Services" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Home Services</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">Quote-to-Book</span><span class="port-card__year">2024</span></div>
+      </article>
+      <article class="port-card" id="homeservices">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?auto=format&fit=crop&w=900&q=80" alt="Home Services" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Home Services</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Quote-to-Book</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-homeservices.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-homeservices.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
-
-    <!-- 08: Local Services -->
-    <article class="port-card" id="local">
-      <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1761208158937-9f30aaea46b1?auto=format&fit=crop&w=900&q=80" alt="Local Services" /></div>
-      <div class="port-card__bar">
-        <div class="port-card__bar-top">
-          <h2 class="port-card__name">Local Services</h2>
-          <div class="port-card__bar-divider"></div>
-          <div class="port-card__label"><span class="port-card__cat">End-to-End CRM</span><span class="port-card__year">2024</span></div>
+      </article>
+      <article class="port-card" id="local">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1761208158937-9f30aaea46b1?auto=format&fit=crop&w=900&q=80" alt="Local Services" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Local Services</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">End-to-End CRM</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-local.html" class="port-card__discover">Discover Case</a></div></div>
         </div>
-        <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-local.html" class="port-card__discover">Discover Case</a></div></div>
-      </div>
-    </article>
+      </article>
+    </main>
+  </div>
 
-  </main>
+  <!-- ── AUTOMATIONS ── -->
+  <div class="port-section" id="section-automations">
+    <main class="port-grid">
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+    </main>
+  </div>
+
+  <!-- ── FUNNELS ── -->
+  <div class="port-section" id="section-funnels">
+    <main class="port-grid">
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+    </main>
+  </div>
+
+  <!-- ── WEBSITES ── -->
+  <div class="port-section" id="section-websites">
+    <main class="port-grid">
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+    </main>
+  </div>
+
+  </div><!-- /.port-sections-wrap -->
 
   <!-- ── CTA BAND ── -->
   <section class="port-cta" id="port-cta">
@@ -483,7 +576,8 @@
       });
       overlay.addEventListener('click', close);
       document.querySelectorAll('.nav__links a').forEach(function(a) { a.addEventListener('click', close); });
-      document.getElementById('navLogoBtn').addEventListener('click', close);
+      var logoBtn = document.getElementById('navLogoBtn');
+      if (logoBtn) logoBtn.addEventListener('click', close);
     }());
 
     // Card hover + scroll reveal
@@ -509,6 +603,9 @@
         var bar      = card.querySelector('.port-card__bar');
         var body     = card.querySelector('.port-card__bar-body');
         var discover = card.querySelector('.port-card__discover');
+
+        // Skip placeholder cards
+        if (!discover) return;
 
         // 1. Wrap discover in overflow:hidden clip FIRST (before measuring)
         var clip = document.createElement('div');
@@ -543,12 +640,86 @@
         scrollTrigger: { trigger: '#port-cta', start: 'top 80%', toggleActions: 'play none none none' }
       });
     }());
+
+    // ── Filter nav — buttery carousel slide ──
+    (function() {
+      var ORDER       = ['all', 'automations', 'funnels', 'websites'];
+      var btns        = document.querySelectorAll('.port-filter__btn');
+      var wrap        = document.getElementById('portSectionsWrap');
+      var currentIdx  = 0;
+      var busy        = false;
+
+      btns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          if (busy) return;
+          var filter  = btn.dataset.filter;
+          var nextIdx = ORDER.indexOf(filter);
+          if (nextIdx === currentIdx) return;
+
+          busy = true;
+          btns.forEach(function(b) { b.classList.remove('active'); });
+          btn.classList.add('active');
+
+          var dir     = nextIdx > currentIdx ? 1 : -1;
+          var current = document.getElementById('section-' + ORDER[currentIdx]);
+          var next    = document.getElementById('section-' + filter);
+
+          // Fix wrap height to current so it doesn't collapse during slide
+          wrap.style.height = wrap.offsetHeight + 'px';
+
+          // Show next panel, slide it in from off-screen
+          next.style.cssText = 'display:block;position:absolute;top:0;left:0;width:100%;';
+          gsap.set(next, { xPercent: dir * 100 });
+
+          // Slide both simultaneously
+          gsap.to(current, {
+            xPercent: -dir * 100,
+            duration: 0.55,
+            ease: 'power3.inOut'
+          });
+          gsap.to(next, {
+            xPercent: 0,
+            duration: 0.55,
+            ease: 'power3.inOut',
+            onComplete: function() {
+              // Cleanup
+              current.classList.remove('active');
+              current.removeAttribute('style');
+              gsap.set(current, { clearProps: 'all' });
+
+              next.removeAttribute('style');
+              next.classList.add('active');
+              gsap.set(next, { clearProps: 'all' });
+
+              wrap.style.height = '';
+              currentIdx = nextIdx;
+              busy = false;
+            }
+          });
+        });
+      });
+    }());
   </script>
 
-  <!-- Copyright Footer -->
-  <footer class="port-foot">
-    <span class="port-foot__copy">© 2026 CraftLab.</span>
-  </footer>
+  <!-- RIGHT SIDE NAV -->
+  <nav class="rnav" id="rnav" aria-label="Page navigation">
+    <a href="index.html" class="rnav__item rnav__item--logo" aria-label="CraftLab Home">
+      <span class="rnav__c">C.</span>
+      <span class="rnav__tip">Home</span>
+    </a>
+    <a href="index.html"   class="rnav__item" aria-label="System">
+      <i class="ph ph-gear"></i>
+      <span class="rnav__tip">System</span>
+    </a>
+    <a href="portfolio.html"      class="rnav__item active" aria-label="All Works">
+      <i class="ph ph-briefcase"></i>
+      <span class="rnav__tip">All Works</span>
+    </a>
+    <a href="index.html"    class="rnav__item" aria-label="About">
+      <i class="ph ph-user"></i>
+      <span class="rnav__tip">About</span>
+    </a>
+  </nav>
 
 </body>
 </html>
