@@ -1012,13 +1012,22 @@ fadeEls.forEach(el => observer.observe(el));
   history.replaceState(null, null, window.location.pathname + window.location.search);
   window.addEventListener('load', function() {
     setTimeout(function() {
-      if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
       var target = document.querySelector(hash);
       if (target) {
         var top = target.getBoundingClientRect().top + window.scrollY - 20;
         window.scrollTo({ top: top, behavior: 'smooth' });
       }
     }, 350);
+  });
+}());
+
+// ── LEAD-TO-CLIENT SYSTEM NAV — reload page so GSAP starts clean, hash nav fix scrolls down ──
+(function() {
+  var btn = document.querySelector('.nav__system-btn');
+  if (!btn) return;
+  btn.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.location.href = window.location.pathname + window.location.search + '#system';
   });
 }());
 

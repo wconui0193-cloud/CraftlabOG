@@ -712,16 +712,19 @@ ul { list-style: none; }
   flex-wrap: wrap;
 }
 .hero__btn {
-  font-size: 13px;
+  font-size: 15px;
   font-weight: 600;
   letter-spacing: 0.04em;
   text-decoration: none;
-  padding: 14px 36px;
+  padding: 18px 48px;
   border-radius: 4px;
   transition: all 0.2s;
-  min-width: 176px;
+  min-width: 220px;
   text-align: center;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
 }
 .hero__btn--solid {
   background: var(--orange);
@@ -2533,6 +2536,16 @@ ul { list-style: none; }
 }
 .who-v2__h .text-orange { color: var(--orange); }
 
+.who-v2__sub {
+  font-family: var(--font-b);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: #555B66;
+  text-transform: uppercase;
+  margin: 14px 0 0;
+}
+
 /* ── Accordion strip ── */
 .who-v2__accordion {
   display: flex;
@@ -2562,24 +2575,25 @@ ul { list-style: none; }
 .who-v2__accordion:hover .who-panel { flex: 0.35; }
 .who-v2__accordion:hover .who-panel:hover { flex: 4; }
 
-/* Gradient overlay — always present, deepens on hover */
+/* Two-tone overlay — industry color + brand orange by default, clears on hover */
 .who-panel__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.88) 0%,
-    rgba(0,0,0,0.35) 40%,
-    rgba(0,0,0,0.10) 100%
+    rgba(0,0,0,0.92) 0%,
+    rgba(0,0,0,0.65) 35%,
+    rgba(255,106,0,0.72) 65%,
+    rgba(255,106,0,0.62) 100%
   );
-  transition: background 0.35s ease;
+  transition: background 0.45s ease;
 }
 .who-panel:hover .who-panel__overlay {
   background: linear-gradient(
     to top,
-    rgba(0,0,0,0.95) 0%,
-    rgba(0,0,0,0.55) 50%,
-    rgba(0,0,0,0.18) 100%
+    rgba(0,0,0,0.88) 0%,
+    rgba(0,0,0,0.35) 40%,
+    rgba(0,0,0,0.10) 100%
   );
 }
 
@@ -3579,6 +3593,23 @@ ul { list-style: none; }
   letter-spacing: 0.04em;
   line-height: 1.2;
 }
+.dlv-all-works {
+  display: inline-block;
+  margin-top: 32px;
+  font-family: 'Barlow Condensed', var(--font-h);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: opacity 0.2s;
+}
+.dlv-all-works:hover { opacity: 0.7; }
+
 /* Right: CTA panel */
 .dlv-right {
   position: sticky;

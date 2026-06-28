@@ -67,6 +67,27 @@
       line-height: 1.8;
       max-width: 46ch;
     }
+    .port-header__mark {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(60px, 9vw, 136px);
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: 0.01em;
+      text-transform: uppercase;
+      color: rgba(246,247,248,0.1);
+      white-space: nowrap;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.28em;
+    }
+    .port-header__mark i {
+      font-size: 0.48em;
+      position: relative;
+      top: -0.06em;
+      font-style: normal;
+      flex-shrink: 0;
+    }
 
 
     /* ── Force rnav to match homepage size ── */
@@ -105,6 +126,22 @@
       background: rgba(255,106,0,0.1);
       border-color: rgba(255,106,0,0.4);
     }
+    .port-filter__all {
+      margin-left: auto;
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: clamp(12px, 1.1vw, 14px);
+      font-weight: 900;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #FF6A00;
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 10px 4px;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .port-filter__all:hover { opacity: 0.75; }
 
     /* ── Sections carousel ── */
     .port-sections-wrap {
@@ -129,15 +166,28 @@
 
     /* ── Placeholder card ── */
     .port-card--placeholder {
-      background: rgba(255,255,255,0.03);
-      border: 1.5px dashed rgba(255,255,255,0.1);
+      cursor: default;
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: default;
     }
-    .port-card--placeholder:hover { border-color: rgba(255,106,0,0.35); }
+    .port-placeholder__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: rgba(11,11,14,0.80);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      border: 1.5px dashed rgba(255,255,255,0.12);
+      border-radius: 16px;
+      transition: border-color 0.25s ease;
+    }
+    .port-card--placeholder:hover .port-placeholder__overlay {
+      border-color: rgba(255,106,0,0.35);
+    }
     .port-placeholder__inner {
+      position: relative;
+      z-index: 2;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -145,7 +195,7 @@
     }
     .port-placeholder__icon {
       font-size: 36px;
-      color: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.18);
       line-height: 1;
     }
     .port-placeholder__label {
@@ -154,7 +204,7 @@
       font-weight: 900;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.22);
     }
 
     /* ── Card — square, image fills entire card ── */
@@ -176,7 +226,8 @@
       inset: 0;
       z-index: 0;
     }
-    .port-card__img img {
+    .port-card__img img,
+    .port-card__img video {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -359,6 +410,86 @@
     .port-back svg { transition: transform 0.2s; }
     .port-back:hover svg { transform: translateX(-4px); }
 
+    /* ── Site Preview Modal ── */
+    .site-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      display: flex;
+      flex-direction: column;
+      background: #0B0B0E;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .site-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .site-modal__bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      height: 52px;
+      background: #111114;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      flex-shrink: 0;
+      gap: 16px;
+    }
+    .site-modal__title {
+      font-family: 'QanelasHeavy', 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+    }
+    .site-modal__url {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.38);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 420px;
+    }
+    .site-modal__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .site-modal__close {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 7px 14px;
+      color: rgba(255,255,255,0.65);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .site-modal__close:hover { background: rgba(255,255,255,0.13); color: #fff; }
+    .site-modal__frame {
+      flex: 1;
+      min-height: 0;
+      border: none;
+      display: block;
+      background: #fff;
+    }
+
     /* ── Responsive ── */
     @media (max-width: 900px) {
       .port-header__inner { grid-template-columns: 1fr; gap: 24px; }
@@ -383,14 +514,14 @@
         <h1 class="port-header__h">All Works.</h1>
       </div>
       <div class="port-header__right">
-        <p class="port-header__desc">GoHighLevel automation systems built for service businesses across the US and Australia. Every project starts with a process map — no templates, no guessing.</p>
+        <p class="port-header__mark"><i>©</i> 2026 CraftLab.</p>
       </div>
     </div>
   </header>
 
   <!-- ── FILTER NAV ── -->
   <nav class="port-filter" id="portFilter">
-    <button class="port-filter__btn active" data-filter="all">Featured Work</button>
+    <button class="port-filter__btn active" data-filter="all">Project Concepts</button>
     <button class="port-filter__btn" data-filter="automations">Automations</button>
     <button class="port-filter__btn" data-filter="funnels">Funnels</button>
     <button class="port-filter__btn" data-filter="websites">Websites</button>
@@ -495,42 +626,210 @@
   <!-- ── AUTOMATIONS ── -->
   <div class="port-section" id="section-automations">
     <main class="port-grid">
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=900&q=80" alt="HVAC Follow-Up" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">12-Touch Follow-Up</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">SMS + Email</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-hvac.html" class="port-card__discover">View Workflow</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1643660527083-5149b75387ca?auto=format&fit=crop&w=900&q=80" alt="Booking Flow" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Booking Flow</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Appointment Automation</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-dental.html" class="port-card__discover">View Workflow</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="No-Show Recovery" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">No-Show Recovery</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Recovery Sequence</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-medspa.html" class="port-card__discover">View Workflow</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=900&q=80" alt="Lead Reactivation" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Lead Reactivation</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Re-engagement</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-solar.html" class="port-card__discover">View Workflow</a></div></div>
+        </div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
     </main>
   </div>
 
   <!-- ── FUNNELS ── -->
   <div class="port-section" id="section-funnels">
     <main class="port-grid">
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1757359056339-22968344cce6?auto=format&fit=crop&w=900&q=80" alt="Real Estate Lead Funnel" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Real Estate</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Lead Capture Funnel</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-realestate.html" class="port-card__discover">View Funnel</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?auto=format&fit=crop&w=900&q=80" alt="Home Services Quote Funnel" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Home Services</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Quote Request Funnel</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-homeservices.html" class="port-card__discover">View Funnel</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1632759145351-1d592919f522?auto=format&fit=crop&w=900&q=80" alt="Roofing Estimate Funnel" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Roofing</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Estimate-to-Close Funnel</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-roofing.html" class="port-card__discover">View Funnel</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1761208158937-9f30aaea46b1?auto=format&fit=crop&w=900&q=80" alt="Local Services Lead Funnel" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Local Services</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Lead Magnet Funnel</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-local.html" class="port-card__discover">View Funnel</a></div></div>
+        </div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1624397640148-949b1732bb0a?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1643660527083-5149b75387ca?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
     </main>
   </div>
 
   <!-- ── WEBSITES ── -->
   <div class="port-section" id="section-websites">
     <main class="port-grid">
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
-      <article class="port-card port-card--placeholder"><div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div></article>
+      <article class="port-card">
+        <div class="port-card__img"><video autoplay loop muted playsinline src="Website%20for%20portfolio%20works/Arctic%20Air%20HVAC/Brand%20assets/Arctic%20air%20Video.mp4" style="object-position: top left;"></video></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Arctic Air</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Lead Gen Website</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="#" class="port-card__discover" data-iframe="Website%20for%20portfolio%20works/Arctic%20Air%20HVAC/arctic%20air%20index1.html" data-title="Arctic Air HVAC">View Website</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><video autoplay loop muted playsinline src="Website%20for%20portfolio%20works/DrSmile%20DENTAL/Dental%20Care%20Brand%20Assets/DrSmile%20Dental.mp4" style="object-position: top center;"></video></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">DrSmile</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Booking Website</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="#" class="port-card__discover" data-iframe="Website%20for%20portfolio%20works/DrSmile%20DENTAL/index.html" data-title="DrSmile Dental">View Website</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="Med Spa Website" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Med Spa Site</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Service + Booking</span><span class="port-card__year">2025</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-medspa.html" class="port-card__discover">View Website</a></div></div>
+        </div>
+      </article>
+      <article class="port-card">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1542336391-ae2936d8efe4?auto=format&fit=crop&w=900&q=80" alt="Solar Website" /></div>
+        <div class="port-card__bar">
+          <div class="port-card__bar-top">
+            <h2 class="port-card__name">Solar Site</h2>
+            <div class="port-card__bar-divider"></div>
+            <div class="port-card__label"><span class="port-card__cat">Quote Funnel Site</span><span class="port-card__year">2024</span></div>
+          </div>
+          <div class="port-card__bar-body"><div class="port-card__bar-body-inner"><a href="case-solar.html" class="port-card__discover">View Website</a></div></div>
+        </div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1635424824849-1b09bdcc55b1?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1757359056339-22968344cce6?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1501360575895-3f3f2639fd74?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
+      <article class="port-card port-card--placeholder">
+        <div class="port-card__img"><img loading="lazy" src="https://images.unsplash.com/photo-1776860155275-eee24bfb1dee?auto=format&fit=crop&w=900&q=80" alt="" /></div>
+        <div class="port-placeholder__overlay"></div>
+        <div class="port-placeholder__inner"><span class="port-placeholder__icon">+</span><span class="port-placeholder__label">Coming Soon</span></div>
+      </article>
     </main>
   </div>
 
@@ -607,31 +906,39 @@
         // Skip placeholder cards
         if (!discover) return;
 
-        // 1. Wrap discover in overflow:hidden clip FIRST (before measuring)
-        var clip = document.createElement('div');
-        clip.style.cssText = 'overflow:hidden;display:inline-block;line-height:1.1;vertical-align:bottom';
-        discover.parentNode.insertBefore(clip, discover);
-        clip.appendChild(discover);
+        // Lazy init — defer all measurement to first mouseenter so the card
+        // is actually visible (non-featured tabs are display:none at load time,
+        // making offsetWidth/offsetHeight return 0 and causing the bar to collapse).
+        var tl = null;
 
-        // 2. Now measure with clip in place
-        var fullW = card.offsetWidth - 24;
-        gsap.set(body, { height: 'auto' });
-        var expandedH = body.offsetHeight;
-        gsap.set(body, { height: 0 });
+        function initHover() {
+          if (tl) return; // already set up
 
-        // 3. Set initial hidden state — use px, not % (span offsetHeight unreliable)
-        var discH = clip.offsetHeight || 24;
-        clip.style.height = discH + 'px';
-        gsap.set(discover, { y: discH + 4 });
+          // Wrap discover in overflow:hidden clip before measuring
+          var clip = document.createElement('div');
+          clip.style.cssText = 'overflow:hidden;display:inline-block;line-height:1.1;vertical-align:bottom';
+          discover.parentNode.insertBefore(clip, discover);
+          clip.appendChild(discover);
 
-        var tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
-        tl.to(img,      { scale: 1.05, duration: 0.75 }, 0)
-          .to(bar,      { width: fullW, duration: 0.42 }, 0)
-          .to(body,     { height: expandedH, duration: 0.42 }, 0)
-          .to(discover, { y: '0%', duration: 0.5, ease: 'power4.out' }, 0.22);
+          // Measure now that the card is visible
+          var fullW = card.offsetWidth - 24;
+          gsap.set(body, { height: 'auto' });
+          var expandedH = body.offsetHeight;
+          gsap.set(body, { height: 0 });
 
-        card.addEventListener('mouseenter', function() { tl.play(); });
-        card.addEventListener('mouseleave', function() { tl.reverse(); });
+          var discH = clip.offsetHeight || 24;
+          clip.style.height = discH + 'px';
+          gsap.set(discover, { y: discH + 4 });
+
+          tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+          tl.to(img,      { scale: 1.05, duration: 0.75 }, 0)
+            .to(bar,      { width: fullW, duration: 0.42 }, 0)
+            .to(body,     { height: expandedH, duration: 0.42 }, 0)
+            .to(discover, { y: 0, duration: 0.5, ease: 'power4.out' }, 0.22);
+        }
+
+        card.addEventListener('mouseenter', function() { initHover(); tl.play(); });
+        card.addEventListener('mouseleave', function() { if (tl) tl.reverse(); });
       });
 
       // ── CTA heading entrance ──
@@ -701,13 +1008,66 @@
     }());
   </script>
 
+  <!-- Site Preview Modal -->
+  <div class="site-modal" id="siteModal" role="dialog" aria-modal="true" aria-label="Site Preview">
+    <div class="site-modal__bar">
+      <span class="site-modal__title" id="siteModalTitle"></span>
+      <div class="site-modal__url" id="siteModalUrl"></div>
+      <div class="site-modal__actions">
+        <button class="site-modal__close" id="siteModalClose"><i class="ph ph-x"></i> Close</button>
+      </div>
+    </div>
+    <iframe class="site-modal__frame" id="siteModalFrame" src="" title="Site Preview"></iframe>
+  </div>
+
+  <script>
+    (function() {
+      var modal  = document.getElementById('siteModal');
+      var frame  = document.getElementById('siteModalFrame');
+      var title  = document.getElementById('siteModalTitle');
+      var urlBar = document.getElementById('siteModalUrl');
+      var close  = document.getElementById('siteModalClose');
+
+      function openModal(src, label) {
+        title.textContent  = label || 'Site Preview';
+        urlBar.textContent = decodeURIComponent(src);
+        frame.src = src;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+        frame.src = '';
+      }
+
+      close.addEventListener('click', closeModal);
+
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+      });
+
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('[data-iframe]');
+        if (!link) return;
+        e.preventDefault();
+        openModal(link.dataset.iframe, link.dataset.title);
+      });
+    }());
+  </script>
+
   <!-- RIGHT SIDE NAV -->
   <nav class="rnav" id="rnav" aria-label="Page navigation">
     <a href="index.html" class="rnav__item rnav__item--logo" aria-label="CraftLab Home">
       <span class="rnav__c">C.</span>
       <span class="rnav__tip">Home</span>
     </a>
-    <a href="index.html"   class="rnav__item" aria-label="System">
+    <a href="index.html#system"   class="rnav__item" aria-label="System">
       <i class="ph ph-gear"></i>
       <span class="rnav__tip">System</span>
     </a>
@@ -715,7 +1075,7 @@
       <i class="ph ph-briefcase"></i>
       <span class="rnav__tip">All Works</span>
     </a>
-    <a href="index.html"    class="rnav__item" aria-label="About">
+    <a href="index.html#about"    class="rnav__item" aria-label="About">
       <i class="ph ph-user"></i>
       <span class="rnav__tip">About</span>
     </a>
