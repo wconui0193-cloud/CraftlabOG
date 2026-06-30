@@ -1,43 +1,43 @@
 @font-face {
   font-family: 'Montserrat';
-  src: url('Brand Assets/Fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Montserrat/Montserrat-SemiBold.ttf') format('truetype');
   font-weight: 600; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Brand Assets/Fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Montserrat/Montserrat-Bold.ttf') format('truetype');
   font-weight: 700; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Montserrat';
-  src: url('Brand Assets/Fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Montserrat/Montserrat-Medium.ttf') format('truetype');
   font-weight: 500; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Lora';
-  src: url('Brand Assets/Fonts/Lora-Full-Version/Web Fonts/Lora/Lora-Regular.woff2') format('woff2'),
-       url('Brand Assets/Fonts/Lora-Full-Version/Desktop Fonts/Lora/static/Lora-Regular.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Lora-Full-Version/Web Fonts/Lora/Lora-Regular.woff2') format('woff2'),
+       url('Brand assets/Fonts/Lora-Full-Version/Desktop Fonts/Lora/static/Lora-Regular.ttf') format('truetype');
   font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Lora';
-  src: url('Brand Assets/Fonts/Lora-Full-Version/Web Fonts/Lora/Lora-Italic.woff2') format('woff2'),
-       url('Brand Assets/Fonts/Lora-Full-Version/Desktop Fonts/Lora/static/Lora-Italic.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Lora-Full-Version/Web Fonts/Lora/Lora-Italic.woff2') format('woff2'),
+       url('Brand assets/Fonts/Lora-Full-Version/Desktop Fonts/Lora/static/Lora-Italic.ttf') format('truetype');
   font-weight: 400; font-style: italic; font-display: swap;
 }
 @font-face {
   font-family: 'Open Sans';
-  src: url('Brand Assets/Fonts/Open Sans/OpenSans-Regular.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Open Sans/OpenSans-Regular.ttf') format('truetype');
   font-weight: 400; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Open Sans';
-  src: url('Brand Assets/Fonts/Open Sans/OpenSans-Semibold.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Open Sans/OpenSans-Semibold.ttf') format('truetype');
   font-weight: 600; font-style: normal; font-display: swap;
 }
 @font-face {
   font-family: 'Open Sans';
-  src: url('Brand Assets/Fonts/Open Sans/OpenSans-Light.ttf') format('truetype');
+  src: url('Brand assets/Fonts/Open Sans/OpenSans-Light.ttf') format('truetype');
   font-weight: 300; font-style: normal; font-display: swap;
 }
 
