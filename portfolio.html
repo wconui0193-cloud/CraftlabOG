@@ -937,14 +937,11 @@
             .to(discover, { y: 0, duration: 0.5, ease: 'power4.out' }, 0.22);
         }
 
-        if (window.matchMedia('(hover: none)').matches) {
-          // Touch device — init immediately and keep bar expanded
-          initHover();
-          tl.progress(1).pause();
-        } else {
+        if (!window.matchMedia('(hover: none)').matches) {
           card.addEventListener('mouseenter', function() { initHover(); tl.play(); });
           card.addEventListener('mouseleave', function() { if (tl) tl.reverse(); });
         }
+        // Touch: CSS @media(hover:none) forces bars open — no GSAP inline styles to conflict
       });
 
       // ── CTA heading entrance ──
