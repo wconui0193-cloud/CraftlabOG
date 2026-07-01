@@ -36,10 +36,98 @@
     });
   }
 
+
+  // ── PROPERTIES CAROUSEL ──────────────────────────────────
+  var propTrack = document.getElementById('prop-track');
+  var propPrev = document.getElementById('prop-prev');
+  var propNext = document.getElementById('prop-next');
+
+  if (propTrack && propPrev && propNext) {
+    var getScrollAmount = function () {
+      var card = propTrack.querySelector('.prop-card');
+      if (!card) { return 400; }
+      return (card.offsetWidth + 24) * 3;
+    };
+
+    propPrev.addEventListener('click', function () {
+      propTrack.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+    propNext.addEventListener('click', function () {
+      propTrack.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+
+    var isDragging = false, startX, scrollStart;
+    propTrack.addEventListener('mousedown', function (e) {
+      isDragging = true;
+      startX = e.pageX;
+      scrollStart = propTrack.scrollLeft;
+      propTrack.classList.add('grabbing');
+    });
+    window.addEventListener('mousemove', function (e) {
+      if (!isDragging) { return; }
+      propTrack.scrollLeft = scrollStart - (e.pageX - startX);
+    });
+    window.addEventListener('mouseup', function () {
+      isDragging = false;
+      propTrack.classList.remove('grabbing');
+    });
+  }
+
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduced || typeof gsap === 'undefined') { return; }
 
   gsap.registerPlugin(ScrollTrigger);
+
+  // ── STORY CAROUSEL (horizontal scroll) ───────────────────
+  var storyTrack        = document.querySelector('.story-track');
+  var storyProgressFill = document.querySelector('.story-progress-fill');
+  if (storyTrack) {
+    var storySlides  = storyTrack.querySelectorAll('.story-slide');
+    var slideCount   = storySlides.length;
+    var storyDone    = false;
+    gsap.to(storyTrack, {
+      x: function () { return -(slideCount - 1) * window.innerWidth; },
+      ease: 'none',
+      scrollTrigger: {
+        trigger: '.story-section',
+        start: 'top top',
+        end: function () { return '+=' + (slideCount - 1) * window.innerWidth; },
+        scrub: 0.6,
+        pin: true,
+        anticipatePin: 1,
+        invalidateOnRefresh: true,
+        snap: {
+          snapTo: 1 / (slideCount - 1),
+          duration: { min: 0.3, max: 0.6 },
+          delay: 0.05,
+          ease: 'power2.inOut'
+        },
+        onUpdate: function (self) {
+          if (storyProgressFill) {
+            storyProgressFill.style.transform = 'scaleX(' + self.progress + ')';
+          }
+        },
+        onLeave: function () {
+          if (storyDone) { return; }
+          storyDone = true;
+          var next = document.querySelector('.ticker-belt') || document.querySelector('.properties');
+          if (next) {
+            var top = next.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({ top: top, behavior: 'smooth' });
+          }
+        },
+        onEnterBack: function () { storyDone = false; }
+      }
+    });
+
+    // Give pin-spacer the story section background so no white flash
+    ScrollTrigger.addEventListener('refresh', function () {
+      var spacer = document.querySelector('.pin-spacer');
+      if (spacer && spacer.contains(document.querySelector('.story-section'))) {
+        spacer.style.background = 'var(--navy-deep)';
+      }
+    });
+  }
 
   function st(el, overrides) {
     return Object.assign({ trigger: el, start: 'top 88%', toggleActions: 'play none none none' }, overrides || {});
@@ -105,13 +193,5 @@
     });
   }
 
-  // ── ABOUT PHOTO PARALLAX ─────────────────────────────────
-  var aboutPhoto = document.querySelector('.about-photo');
-  if (aboutPhoto) {
-    gsap.fromTo(aboutPhoto, { y: '-5%' }, {
-      y: '5%', ease: 'none',
-      scrollTrigger: { trigger: '.about-split', start: 'top bottom', end: 'bottom top', scrub: 1 }
-    });
-  }
 
 })();
